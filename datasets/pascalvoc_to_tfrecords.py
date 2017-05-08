@@ -100,6 +100,8 @@ def _process_image(directory, name):
     truncated = []
     for obj in root.findall('object'):
         label = obj.find('name').text
+        if label not in VOC_LABELS:
+            continue
         labels.append(int(VOC_LABELS[label][0]))
         labels_text.append(label.encode('ascii'))
 
